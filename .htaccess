@@ -1,0 +1,16 @@
+RewriteEngine On
+
+# Redirigir /read a read.php
+RewriteRule ^read$ read.php [NC,L]
+
+# Redirigir /read/123 a read.php?id=123
+RewriteRule ^read/([0-9_-]+)$ read.php?id=$1 [NC,L]
+
+# Redirigir /create a create.php
+RewriteRule ^create$ create.php [NC,L]
+
+# Redirigir /update a update.php
+RewriteRule ^update$ update.php [NC,L]
+
+# Redirigir /delete a delete.php
+RewriteRule ^delete$ delete.php [NC,L]
