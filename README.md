@@ -38,3 +38,41 @@ INSERT INTO `items` (`id`, `name`, `description`, `price`, `category_id`, `creat
 
 Con posterioridad modifiqué el id para que sea autoincremental.
 
+Para el Thunder Client uso las siguientes URL:
+1. Show all
+http://localhost/php_api_rest2/items/read.php
+
+
+2. Delete
+http://localhost/php_api_rest2/items/delete.php
+
+y en el body en formato JSON le paso:
+{
+  "id":3
+}
+
+3. Insert
+http://localhost/php_api_rest2/items/insert.php
+
+{
+    "name": "Usha Sewing Machine",
+    "description": "its best machine",
+    "price":"90000",
+    "category_id":"6",
+    "created": "2019-11-09 04:30:00"
+}
+
+4. Update
+http://localhost/php_api_rest2/items/update.php
+
+{
+    "id": "61",
+    "name": "Usha Sewing Automatic Machine",
+    "description": "its best machine",
+    "price":"90000",
+    "category_id":"6",
+    "created": "2019-11-09 04:30:00"
+}
+
+5.Get 1 item
+http://localhost/php_api_rest2/items/read.php?id=2
