@@ -1,97 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Items</title>
+    <title>Crear usuario en Moodle</title>
     <style>
-        table {
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
             width: 100%;
-            border-collapse: collapse;
-        }
-        
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        tr:hover {background-color: #f5f5f5;}
-        
-        .button {
-            margin: 10px;
             padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"] {
             background-color: #4CAF50;
-            color: white;
+            color: #fff;
+            padding: 10px 20px;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
         }
-    </style>
-</head>
-<body>
-    <h1>Items</h1>
-    <button class="button" onclick="getItems()">Get Items</button>
 
-    <table id="itemsTable" style="display: none;">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Category ID</th>
-            </tr>
-        </thead>
-        <tbody id="itemsTableBody"></tbody>
-    </table>
-
-    <script>
-        function getItems() {
-            // Aquí debes realizar una petición AJAX para llamar a la función read en items/read.php
-            // Puedes usar la función fetch() de JavaScript para realizar la petición
-
-            fetch('items/read.php')
-                .then(response => response.json())
-                .then(data => displayItems(data))
-                .catch(error => console.log(error));
+        input[type="submit"]:hover {
+            background-color: #45a049;
         }
+    </style>
+<body>
+    <h1>Crear usuario en Moodle</h1>
+    <form action="./moodle_create_user.php" method="post">
+        <label for="username">Nombre de usuario:</label>
+        <input type="text" id="username" name="username" required><br>
 
-        function displayItems(items) {
-  var itemsTable = document.getElementById('itemsTable');
-  var itemsTableBody = document.getElementById('itemsTableBody');
-  itemsTableBody.innerHTML = '';
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required><br>
 
-  if (items.items.length > 0) {
-    itemsTable.style.display = 'table';
+        <label for="firstname">Nombre:</label>
+        <input type="text" id="firstname" name="firstname" required><br>
 
-    items.items.forEach(item => {
-      var row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${item.id}</td>
-        <td>${item.name}</td>
-        <td>${item.description}</td>
-        <td>${item.price}</td>
-        <td>${item.category_id}</td>
-        <td>
-          <button class="button" onclick="showItem(${item.id})">Show Item</button>
-        </td>
-      `;
-      itemsTableBody.appendChild(row);
-    });
-  } else {
-    itemsTable.style.display = 'none';
+        <label for="lastname">Apellido:</label>
+        <input type="text" id="lastname" name="lastname" required><br>
 
-    var noItemsRow = document.createElement('tr');
-    var noItemsCell = document.createElement('td');
-    noItemsCell.setAttribute('colspan', '6');
-    noItemsCell.textContent = 'No items found.';
-    noItemsRow.appendChild(noItemsCell);
-    itemsTableBody.appendChild(noItemsRow);
-  }
-}
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
 
-function showItem(itemId) {
-  window.location.href = './item.php?id=' + itemId;
-}
-    </script>
+        <label for="city">Ciudad:</label>
+        <input type="text" id="city" name="city" required><br>
+
+        <label for="country">País:</label>
+        <input type="text" id="country" name="country" required><br>
+
+        <input type="submit" value="Crear usuario">
+    </form>
 </body>
 </html>
